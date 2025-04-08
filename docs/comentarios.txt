@@ -1,0 +1,54 @@
+Lições aprendidas durante o curso da Iterasys (Turma 142)
+
+- Gravação e execução de testes com Selenium IDE
+- Adaptação de testes gravados para uso com Selenium WebDriver
+- Criação de scripts do zero via programação
+
+Obs: Para projetos pequenos, cada teste pode estar em um único arquivo.
+
+========================================================
+
+Abordagens recomendadas para projetos com maior duração: Abordagem BDD (Behavior Driven Development)
+
+- Significado: Desenvolvimento guiado por comportamento
+- Objetivo: Melhorar a comunicação entre os membros da equipe
+- Utiliza o plugin/framework Cucumber → https://cucumber.io/
+- Segue a sintaxe Gherkin (linguagem estruturada e legível por todos)
+
+Estrutura de teste no BDD
+
+Composto por 2 arquivos:
+1. Arquivo de negócio escrito em Gherkin (.feature)
+2. Arquivo de automação que faz referência ao feature (.java)
+
+Comandos para execução:
+
+# Executar testes com JUnit5 + Cucumber
+mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features="src/test/resources/features"
+
+# Executar diretamente usando o Main do Cucumber
+mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args="src/test/resources/ComprarPassagemBDD.feature --glue stepsPO"
+
+========================================================
+
+Abordagem Page Objects / Page Factory
+
+- Pode ser usada com ou sem BDD
+- Foco na manutenção e reaproveitamento de código
+- Ideal para projetos com ciclo de vida longo (CVDS / SDLC)
+
+Estrutura típica:
+- Arquivo de mapeamento para cada página ou seção (*Page.java)
+- Arquivo comum para elementos compartilhados (ex: CommumPage.java)
+- Arquivo base para configurar o WebDriver (BaseTest.java)
+
+Se usado com BDD:
+- Arquivo de negócio (.feature)
+- Arquivo de automação (.java)
+- Arquivos de mapeamento (Page Objects)
+
+Arquivos adicionais por projeto:
+- Hooks.java → Métodos Before e After centralizados
+- Runner.java → Responsável por executar os testes (maestro)
+
+========================================================
