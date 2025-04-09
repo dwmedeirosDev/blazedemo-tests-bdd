@@ -52,6 +52,13 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Permite executar os testes Cucumber utilizando o JUnit como framework de execução -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.22.0</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
