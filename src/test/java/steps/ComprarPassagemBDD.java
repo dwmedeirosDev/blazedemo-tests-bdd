@@ -21,6 +21,8 @@ import io.github.bonigarcia.wdm.WebDriverManager; // Importa o gerenciador autom
 public class ComprarPassagemBDD {
 
     WebDriver driver; // Instância do WebDriver para controlar o navegador
+    String origem;
+    String destino;
 
     @Before // Executa antes de cada cenário de teste
     public void iniciar() {
@@ -44,12 +46,14 @@ public class ComprarPassagemBDD {
     @When("seleciono a origem {string} e destino {string}") // Passo para selecionar cidades de origem e destino
     public void seleciono_a_origem_e_destino(String origem, String destino) {
         {
+            this.origem = origem;
             WebElement combo = driver.findElement(By.name("fromPort")); // Localiza o combo de origem pelo atributo name
             combo.click(); // Clica para abrir a lista de opções
             // Seleciona a opção de origem com base no texto
             combo.findElement(By.xpath("//option[.='" + origem + "']")).click();
         }
         {
+            this.destino = destino;
             WebElement combo = driver.findElement(By.name("toPort")); // Localiza o combo de destino pelo atributo name
             combo.click(); // Clica para abrir a lista de opções
             // Seleciona a opção de destino com base no texto
@@ -65,6 +69,6 @@ public class ComprarPassagemBDD {
 
     @Then("visualiza a lista de voos") // Passo que valida se a lista de voos foi exibida
     public void visualiza_a_lista_de_voos() {
-        assertEquals("Flights from São Paolo to Cairo:", driver.findElement(By.cssSelector("h3")));
+        assertEquals("Flights from " + origem + " to " + destino + ":", driver.findElement(By.cssSelector("h3")).getText());
     }
 }
