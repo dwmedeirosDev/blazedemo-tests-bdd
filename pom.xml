@@ -59,6 +59,14 @@
             <version>7.20.1</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- WebDriverManager: gerencia automaticamente os drivers dos navegadores como Chrome,
+        Firefox, etc. -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>6.0.1</version>
+        </dependency>
     </dependencies>
 
 </project>
