@@ -1,4 +1,4 @@
-package steps;
+package steps; // Define o pacote onde essa classe está localizada (organiza o código dentro do projeto)
 
 import static org.junit.Assert.assertEquals; // Importa o método assertEquals para fazer comparações em testes
 
@@ -21,8 +21,8 @@ import io.github.bonigarcia.wdm.WebDriverManager; // Importa o gerenciador autom
 public class ComprarPassagemBDD {
 
     WebDriver driver; // Instância do WebDriver para controlar o navegador
-    String origem;
-    String destino;
+    String origem;  // Variável para armazenar o valor da cidade de origem (vinda do .feature)
+    String destino; // Variável para armazenar o valor da cidade de destino (vinda do .feature)
 
     @Before // Executa antes de cada cenário de teste
     public void iniciar() {
@@ -40,20 +40,20 @@ public class ComprarPassagemBDD {
 
     @Given("que acesso o site {string}") // Passo que acessa a URL fornecida no .feature
     public void que_acesso_o_site(String url) {
-        driver.get(url);
+        driver.get(url); // Abre o navegador e navega para a URL especificada
     }
 
     @When("seleciono a origem {string} e destino {string}") // Passo para selecionar cidades de origem e destino
     public void seleciono_a_origem_e_destino(String origem, String destino) {
         {
-            this.origem = origem;
+            this.origem = origem; // Armazena o valor recebido parâmetro na variável da classe para uso em outros métodos
             WebElement combo = driver.findElement(By.name("fromPort")); // Localiza o combo de origem pelo atributo name
             combo.click(); // Clica para abrir a lista de opções
             // Seleciona a opção de origem com base no texto
             combo.findElement(By.xpath("//option[.='" + origem + "']")).click();
         }
         {
-            this.destino = destino;
+            this.destino = destino; // Armazena o valor recebido parâmetro na variável da classe para uso em outros métodos
             WebElement combo = driver.findElement(By.name("toPort")); // Localiza o combo de destino pelo atributo name
             combo.click(); // Clica para abrir a lista de opções
             // Seleciona a opção de destino com base no texto
@@ -69,6 +69,7 @@ public class ComprarPassagemBDD {
 
     @Then("visualiza a lista de voos") // Passo que valida se a lista de voos foi exibida
     public void visualiza_a_lista_de_voos() {
+        // Verifica se o título da página corresponde à rota selecionada
         assertEquals("Flights from " + origem + " to " + destino + ":", driver.findElement(By.cssSelector("h3")).getText());
     }
 }
