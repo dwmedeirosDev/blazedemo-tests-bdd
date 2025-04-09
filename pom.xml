@@ -34,7 +34,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.28.1</version>
+            <version>4.31.0</version>
         </dependency>
 
         <!-- Cucumber Java: permite escrever testes BDD com suporte à linguagem Gherkin -->
@@ -61,7 +61,7 @@
         </dependency>
 
         <!-- WebDriverManager: gerencia automaticamente os drivers dos navegadores como Chrome,
-        Firefox, etc. -->
+            Firefox, etc. -->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
