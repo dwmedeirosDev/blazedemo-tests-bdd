@@ -21,8 +21,8 @@ import io.github.bonigarcia.wdm.WebDriverManager; // Importa o gerenciador autom
 public class ComprarPassagemBDD {
 
     WebDriver driver; // Instância do WebDriver para controlar o navegador
-    String origem;  // Variável para armazenar o valor da cidade de origem (vinda do .feature)
-    String destino; // Variável para armazenar o valor da cidade de destino (vinda do .feature)
+    String origem;  // Variável para armazenar o valor origem (vinda do .feature)
+    String destino; // Variável para armazenar o valor destino (vinda do .feature)
 
     @Before // Executa antes de cada cenário de teste
     public void iniciar() {
@@ -69,7 +69,7 @@ public class ComprarPassagemBDD {
 
     @Then("visualiza a lista de voos") // Passo que valida se a lista de voos foi exibida
     public void visualiza_a_lista_de_voos() {
-        // Verifica se o título da página corresponde à rota selecionada
+        // Valida se o título exibido na página corresponde ao texto esperado com a origem e o destino selecionados
         assertEquals("Flights from " + origem + " to " + destino + ":", driver.findElement(By.cssSelector("h3")).getText());
     }
 }
