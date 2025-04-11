@@ -44,6 +44,7 @@ public class ComprarPassagemBDD {
     }
 
     @When("seleciono a origem {string} e destino {string}") // Passo para selecionar cidades de origem e destino
+    @When("seleciono a {string} e {string}") // Passo para selecionar cidades de origem e destino DDT
     public void seleciono_a_origem_e_destino(String origem, String destino) {
         {
             this.origem = origem; // Armazena o valor recebido parâmetro na variável da classe para uso em outros métodos
